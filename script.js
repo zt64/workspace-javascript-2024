@@ -1,4 +1,3 @@
-
 /* <!-- Work around stackblitz does not support  static images -->
 Add the image path to all images
 https://raw.githubusercontent.com/yilianz/workspace-javascript/master/
@@ -10,20 +9,16 @@ $('img').each(function(){
 });
 
 */
-$(function(){
-    $('div.practice').hide();
-    $('div.practice h1').each(function(){
+$(function () {
+    $("div.practice").hide();
+    $("div.practice h1").each(function () {
         var content = $(this).text();
-        $('.panelLeft').append("<h1>"+content+"</h1");    
+        $(".panelLeft").append("<h1>" + content + "</h1");
     });
 
-    $('.panelLeft h1').click(function(){
+    $(".panelLeft h1").click(function () {
         var index = $(this).index();
-        $('div.practice').hide();
-        $('div.practice').eq(index).fadeIn(1000);
-    }); 
-
+        $("div.practice").hide();
+        $("div.practice").eq(index).fadeIn(1000);
+    });
 });
-
-
-

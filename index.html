@@ -1,4 +1,4 @@
-<html>
+<html lang="en-US">
 
 <head>
     <meta charset="UTF-8">
@@ -14,25 +14,25 @@
 <body>
     <div class="wrapper">
         <div class="panelLeft">
-            
+
         </div>
 
         <div class="practice">
             <h1>Hello world in JavaScript
             </h1>
             <p>
-                Please display a hello world message in JavaScript. 
+                Please display a hello world message in JavaScript.
                 <script>
-                    document.title = "JavaScript Basic -- In class practice -- Yilian Zhang";
+                    document.title = "JavaScript Basic -- In class practice -- Nick";
                     // use document.write to display a message
-                    
-                    // use console.log to display a message   
-                  
-                    
+                    document.write("<p>Hi, Great. I am here</p>");
+                    // use console.log to display a message
+                    console.log("This is for debugging")
+
                 </script>
             </p>
-            <p> Please import external file hello.js here. 
-                
+            <p> Please import external file hello.js here.
+                <script src="js/hello.js"></script>
             </p>
         </div>
 
@@ -40,14 +40,34 @@
             <h1> Variable and Arithemetic Operation</h1>
             <p> Practice on variables </p>
 
+            <script>
+                var a = parseInt("10");
+                var b = 5.6;
 
+                document.write(`<p>The value of a + b is ${a + b}</p>`);
+                document.write(`<p>The value of a - b is ${a - b}</p>`);
+                document.write(`<p>The value of a * b is ${a * b}</p>`);
+                document.write(`<p>The value of a / b is ${a / b}</p>`);
+                document.write(`<p>The value of a % b is ${a % b}</p>`);
+            </script>
         </div>
 
         <div class="practice">
             <h1> JavaScript Escape Sequence</h1>
-            <p> Write an image to the page </p>
+            <p> Write an image to the page
+                <script>
+                    document.write("<img src=\"img/die1.png\" alt=\"die1\" />");
+                </script>
+            </p>
 
-            <p> Write a table to the page </p>
+            <p> Write a table to the page
+                <script>
+                    document.write("<table border=\"1\">");
+                    document.write("<tr><td>1</td><td>2</td></tr>");
+                    document.write("<tr><td>3</td><td>4</td></tr>");
+                    document.write("</table>");
+                </script>
+            </p>
 
         </div>
 
@@ -130,13 +150,13 @@
             <h1> Difference between textcontent and innerHTML</h1>
             <p> HTML Try it Editor </p>
             <p>ENTER your code </p>
-            <textarea cols="40" rows="20" id="code">  
+            <textarea cols="40" rows="20" id="code">
 
             </textarea>
 
-            <input type="button" id="tryit" value="Click and Display"> 
+            <input type="button" id="tryit" value="Click and Display">
 
-            <div id="message"> 
+            <div id="message">
             </div>
 
 
@@ -149,12 +169,14 @@
                 <select id="year">
                     <option> 2003</option>
                     <option> 2004</option>
-                </select>.</p>
+                </select>.
+            </p>
             <p>Please enter the condition of the car
                 <select id="condition">
                     <option> Fair</option>
                     <option> Good</option>
-                </select>.</p>
+                </select>.
+            </p>
 
             <p id="price">
 
@@ -299,9 +321,9 @@
             <div class="img-container-hide">
                 <img src="img/usca5.jpg" alt="usca">
             </div>
-			<script>
-				
-			</script>
+            <script>
+
+            </script>
 
 
         </div>
@@ -343,10 +365,10 @@
 
 
         <div class="practice">
-            <h1>  HTML Canvas </h1>
+            <h1> HTML Canvas </h1>
             <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
-                    Your browser does not support the HTML5 canvas tag.</canvas>
-            <div id="drawing">  </div>
+                Your browser does not support the HTML5 canvas tag.</canvas>
+            <div id="drawing"> </div>
             <p> Some P5.js examples </p>
             <script src="https://cdn.jsdelivr.net/npm/p5@1/lib/p5.min.js"></script>
             <script src="js/draw.js"></script>
