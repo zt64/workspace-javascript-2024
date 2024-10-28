@@ -49,6 +49,9 @@
                 document.write(`<p>The value of a * b is ${a * b}</p>`);
                 document.write(`<p>The value of a / b is ${a / b}</p>`);
                 document.write(`<p>The value of a % b is ${a % b}</p>`);
+
+                console.log(typeof a);
+                const message = "great";
             </script>
         </div>
 
@@ -75,7 +78,8 @@
             <h1>Window and Document Object </h1>
             <p> Try alert, open, location, url </p>
             <script>
-
+                // alert("another alert");
+                // window.location.assign("https://www.google.com");
             </script>
 
         </div>
@@ -94,8 +98,21 @@
             <p id="p1"> Paragraph Number One </p>
             <p id="p2"> Paragraph Number two </p>
             <p id="p3"> Paragraph Number three </p>
-            <p>Please write JavaScript code to change the content of each paragraph.​
-            <p>
+            <p>Please write JavaScript code to change the content of each paragraph.
+                <script>
+                    // change the first paragraph
+                    const p1 = document.getElementById("p1");
+                    p1.innerHTML = "<b> This is the first paragraph </b>";
+
+                    // change the second paragraph
+                    const p2 = document.getElementById("p2");
+                    p2.innerHTML = "This is the second paragraph";
+
+                    // change the third paragraph
+                    const p3 = document.getElementById("p3");
+                    p3.innerHTML = "This is the third paragraph";
+                </script>
+            </p>
 
 
         </div>
@@ -105,11 +122,13 @@
             <p> Please enter your numbers </p>
             <script>
                 function calculate() {
-
-
+                    const num1 = parseInt(document.getElementsByName("num1")[0].value);
+                    const num2 = parseInt(document.getElementsByName("num2")[0].value);
+                    document.getElementById("result").textContent = num1 + num2;
                 }
             </script>
-            <p> <input type="text" name="num1" /> + <input type="text" name="num2">
+            <p>
+                <input type="text" name="num1"> + <input type="text" name="num2">
                 <input type="button" value="=" onclick="calculate();">
                 <label id="result"> ? </label>
             </p>
@@ -135,6 +154,17 @@
                     </label>
                 </p>
             </form>
+
+            <script>
+                // Event handler
+                function welcome() {
+                    alert("Thank you!")
+                }
+
+                // Binding -- register the event
+                const nameElement = document.getElementById("cName");
+                nameElement.addEventListener("blur", welcome);
+            </script>
 
         </div>
 
