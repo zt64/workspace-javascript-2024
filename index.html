@@ -157,8 +157,14 @@
 
             <script>
                 // Event handler
+
                 function welcome() {
-                    alert("Thank you!")
+                    const name = document.getElementById("cName").value;
+                    const email = document.getElementById("cEmail").value;
+
+                    const newMessage = `Welcome ${name}, you are a new customer`;
+
+                    document.getElementById("message").textContent = newMessage;
                 }
 
                 // Binding -- register the event
@@ -172,8 +178,14 @@
             <h1> Practice - Calculate Square</h1>
             Calculating Square:
             <input type="text" id="num" placeholder="Type in a number"> <sup> 2 </sup> =
-            <label id="result"> ? </label>
-
+            <label id="squareResult"> ? </label>
+            <script>
+                function doSquare() {
+                    const num = parseInt(document.getElementById("num").value);
+                    document.getElementById("squareResult").textContent = num * num;
+                }
+                document.addEventListener("change", doSquare);
+            </script>
         </div>
 
         <div class="practice">
@@ -186,9 +198,19 @@
 
             <input type="button" id="tryit" value="Click and Display">
 
-            <div id="message">
+            <div id="htmlcode">
             </div>
 
+            <script>
+                function convertHtml() {
+                    const codeE = document.getElementById("code");
+                    const bodyE = document.getElementById("htmlcode");
+
+                    bodyE.innerHTML = codeE.value;
+                }
+
+                document.getElementById("tryit").addEventListener("click", convertHtml);
+            </script>
 
         </div>
 
@@ -199,7 +221,7 @@
                 <select id="year">
                     <option> 2003</option>
                     <option> 2004</option>
-                </select>.
+                </select>
             </p>
             <p>Please enter the condition of the car
                 <select id="condition">
@@ -212,10 +234,33 @@
 
             </p>
 
-            <script type="text/javascript">
+            <script>
+                const year = document.getElementById("year");
+                const condition = document.getElementById("condition");
 
+                // event handlers
+                function calculatePrice() {
+                    let price;
 
+                    if (year.selectedIndex == 0) {
+                        if (condition.selectedIndex == 0) {
+                            price = 2000;
+                        } else {
+                            price = 3000;
+                        }
+                    } else {
+                        if (condition.selectedIndex == 0) {
+                            price = 4000;
+                        } else {
+                            price = 5000;
+                        }
+                    }
 
+                    document.getElementById("price").textContent = price;
+                }
+
+                year.addEventListener("change", calculatePrice);
+                condition.addEventListener("change", calculatePrice);
             </script>
 
         </div>
@@ -225,10 +270,30 @@
             <p> Choose your favorite theme(warm, cool, hot)
                 <input type="text" id="theme">
             </p>
+            <script>
+                const theme = document.getElementById("theme");
 
+                function getTheme() {
+                    const themeValue = theme.value;
+
+                    switch (themeValue) {
+                        case "warm":
+                            document.body.style.backgroundColor = "yellow";
+                            break;
+                        case "cool":
+                            document.body.style.backgroundColor = "blue";
+                            break;
+                        case "hot":
+                            document.body.style.backgroundColor = "red";
+                            break;
+                        default:
+                            alert("Please enter a valid theme");
+                    }
+                }
+
+                theme.addEventListener("blur", getTheme, false);
+            </script>
         </div>
-
-
 
         <div class="practice">
             <h1> Switch practice -- Insurance Application</h1>
@@ -249,12 +314,42 @@
 
             </p>
             <p>
-                <input type="button" value="Check Premium">
+                <input id="check_premium" type="button" value="Check Premium">
             </p>
-            <p id="result">
+            <p id="premiumResult">
 
             </p>
 
+            <script>
+                function checkPremium() {
+                    let base = 10;
+                    const coverage = document.querySelector("input[name='coverage']:checked").value;
+                    const agegroup = document.getElementById("agegroup").selectedIndex;
+
+                    let agefactor;
+                    switch (agegroup) {
+                        case 0:
+                            agefactor = 1.5;
+                            break;
+                        case 1:
+                            agefactor = 1.3;
+                            break;
+                        case 2:
+                            agefactor = 1.2;
+                            break;
+                        case 3:
+                            agefactor = 1.1;
+                            break;
+                        default:
+                            agefactor = 1;
+                    }
+
+                    const premium = base + parseFloat(coverage) / 1000 * agefactor;
+                    document.querySelector("#premiumResult").textContent = `Your premium is $${premium}`;
+                }
+
+                document.getElementById("check_premium").addEventListener("click", checkPremium);
+            </script>
         </div>
 
 
@@ -262,12 +357,24 @@
 
         <div class="practice">
             <h1>For Loop Practice 1 </h1>
-            <p> Display the square of numer 1... N </p>
+            <p> Display the square of number 1... N </p>
             <p> N = <input type="number" min="1" max="10" id="inputnumber1"> </p>
             <p>
-                <input type="button" value="Click for Square">
+                <input id="squareButton" type="button" value="Click for Square">
             </p>
-
+            <p id="squareList"></p>
+            <script>
+                document.getElementById("squareButton").addEventListener("click", function () {
+                    const n = document.getElementById("inputnumber1").value;
+                    let outlist = "<ul>";
+                    for (let i = 1; i <= n; i++) {
+                        const num = i * i;
+                        outlist += `<li>${i} * ${i} = ${num}</li>`;
+                    }
+                    outlist += "</ul>";
+                    document.getElementById("squareList").innerHTML = outlist;
+                });
+            </script>
         </div>
 
 
@@ -304,12 +411,19 @@
             <p> A simple JavaScript Quiz </p>
             <p>Target: Generate a simple substract and add problems using JavaScript and then check the answers</p>
             <a href="quiz1.html">Do your practice in quiz1.html</a>
+
+            <script>
+                for (let i = 0; i < 4; i++) {
+                    const num = Math.floor(Math.random() * 9);
+                    // alert(num);
+                }
+            </script>
         </div>
 
         <div class="practice">
             <h1>Change Attribute -- Rolling a dice </h1>
-            <p> <input type="button" id="roll" value="roll" /> </p>
-            <p> <img src="img/die1.png"> </p>
+            <p> <input type="button" id="roll" value="roll"> </p>
+            <p> <img id="dieimage" src="img/die1.png" alt=""> </p>
             <table>
                 <tr>
                     <th>Result</th>
@@ -330,20 +444,42 @@
                     <td id="r6"></td>
                 </tr>
             </table>
+            <script>
+                // const myArray = [1, 2, 3, 4, 5, 6, 7];
+                // myArray.forEach(element => console.log(element));
+                // myArray.push(8);
+                // myArray.push(10);
+                // myArray.pop();
 
+                // for (let i in myArray) {
+                //     console.log(myArray[i]);
+                // }
+
+                const stats = [0, 0, 0, 0, 0, 0, 0];
+
+                function rollDice() {
+                    const imageElement = document.getElementById("dieimage");
+                    const random = Math.floor(Math.random() * 6) + 1;
+                    imageElement.setAttribute("src", `img/die${random}.png`);
+                    stats[random - 1]++;
+                }
+
+                document.getElementById("roll").addEventListener("click", rollDice);
+
+            </script>
         </div>
 
 
         <div class="practice">
             <h1> Array example - Image banner</h1>
             <div class="img-container-hide">
-                <img src="img/usca1.jpg" alt="usca" />
+                <img src="img/usca1.jpg" alt="usca">
             </div>
             <div class="img-container-hide">
-                <img src="img/usca2.jpg" alt="usca" />
+                <img src="img/usca2.jpg" alt="usca">
             </div>
             <div class="img-container-hide">
-                <img src="img/usca3.jpg" alt="usca" />
+                <img src="img/usca3.jpg" alt="usca">
             </div>
             <div class="img-container-hide">
                 <img src="img/usca4.jpg" alt="usca">
@@ -352,7 +488,18 @@
                 <img src="img/usca5.jpg" alt="usca">
             </div>
             <script>
+                const imageList = document.querySelectorAll(".img-container-hide");
+                imageList[0].setAttribute("class", "img-container-show");
+                let index = 0;
+                function changePicture() {
+                    imageList[index].setAttribute("class", "img-container-hide");
+                    index++;
+                    index = index % 6;
+                    imageList[index].setAttribute("class", "img-container-show");
+                }
 
+                setInterval(changePicture, 5000);
+                imageList[0].addEventListener("click", changePicture);
             </script>
 
 
